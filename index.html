@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng tính xèn của bé Cá</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <video autoplay loop muted playsinline id="background-video">
+        <source src="https://v1.pinimg.com/videos/mc/720p/b6/a4/cd/b6a4cdf5da4fddb04831457ac5a08137.mp4" type="video/mp4">
+        Trình duyệt của bạn không hỗ trợ video.
+    </video>
+
+    <div id="login-section" class="login-container">
+        <div class="avatar-placeholder">
+            <img src="https://i.pinimg.com/736x/87/00/e0/8700e0067fd9cbba91c7927d53960711.jpg" alt="Ảnh đại diện của bé Cá">
+        </div>
+        <h1>Bảng tính xèn của bé Cá 🐠</h1>
+        <p>Để xác định là bé Cá vui lòng nhập pass ở đây:</p>
+        <input type="password" id="password-input" placeholder="Nhập mật khẩu...">
+        <button id="login-button">Bơi thôi</button>
+        <p id="error-message" class="error-message"></p>
+    </div>
+
+    <div id="main-section" class="main-container hidden">
+        <h2>Xin chào bé Cá, hôm nay tính gì nào?</h2>
+        <div class="action-buttons">
+            <button id="btn-add-class">Nhập lớp mới</button>
+            <button id="btn-attendance">Điểm danh thôi</button>
+            <button id="btn-salary-report">Tổng lương mỗi tháng</button>
+        </div>
+        <div id="content-area">
+            
+            <div id="new-class-view" class="hidden">
+                <h3>📝 Thêm lớp học mới</h3>
+                <form id="new-class-form" class="class-form">
+                    <div class="form-group"><label for="student-name">Tên học viên:</label><input type="text" id="student-name" required></div>
+                    <div class="form-group"><label for="class-type">Loại lớp là gì?</label><input type="text" id="class-type" placeholder="VD: Luyện thi IELTS, Toán lớp 10..."></div>
+                    <div class="form-group">
+                        <label for="class-schedule">Lịch học như thế nào?</label>
+                        <select id="class-schedule">
+                            <option value="T2-T4">Thứ 2 - Thứ 4</option><option value="T3-T5">Thứ 3 - Thứ 5</option><option value="T4-T6">Thứ 4 - Thứ 6</option><option value="T7-CN">Thứ 7 - Chủ Nhật</option><option value="T2-T4-T6">Thứ 2 - Thứ 4 - Thứ 6</option><option value="T3-T5-T7">Thứ 3 - Thứ 5 - Thứ 7</option><option value="Khac">Khác...</option>
+                        </select>
+                    </div>
+                    <div class="form-group hidden" id="custom-schedule-group"><label for="custom-schedule">Nhập lịch dạy khác:</label><input type="text" id="custom-schedule" placeholder="Gõ theo cú pháp 'Thứ A - B - C...'"></div>
+                    <div class="form-group"><label for="salary-rate">Rate lương (vnđ/buổi):</label><input type="text" id="salary-rate" required placeholder="Ví dụ: 200000 hoặc 200.000"></div>
+                    <div class="form-group"><label for="parent-email">Email Phụ Huynh (Tùy chọn):</label><input type="email" id="parent-email" placeholder="VD: phuhuynh@email.com"></div>
+                    <div class="form-buttons"><button type="submit" class="btn-primary">Tạo lớp</button><button type="button" id="cancel-add-class" class="btn-secondary">Hủy</button></div>
+                </form>
+            </div>
+
+            <div id="class-list-view" class="hidden">
+                <h3>Chọn lớp để điểm danh</h3>
+                <div id="class-list-container"></div>
+            </div>
+
+            <div id="attendance-view" class="hidden">
+                <button id="back-to-class-list" class="btn-back">← Quay lại danh sách lớp</button>
+                <h3 id="attendance-header"></h3>
+                <div class="calendar-nav">
+                    <button id="prev-month-btn">Tháng trước</button>
+                    <h4 id="month-display"></h4>
+                    <button id="next-month-btn">Tháng sau</button>
+                </div>
+                <div id="calendar-grid" class="calendar-grid"></div>
+                <div class="attendance-footer">
+                    <button id="copy-report-btn" class="btn-secondary">Báo cáo học phí</button>
+                    <div class="salary-summary">
+                        Tổng lương tháng này: <span id="monthly-salary-total">0 vnđ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="salary-report-view" class="hidden">
+                <h3>Báo cáo tổng lương</h3>
+                 <div class="report-nav">
+                    <label for="report-month">Chọn tháng:</label>
+                    <input type="month" id="report-month-picker">
+                </div>
+                <div id="report-content"></div>
+                <div class="salary-summary">
+                    <strong>Tổng cộng: <span id="grand-total-salary">0 vnđ</span></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmation-modal" class="modal-overlay hidden">
+       <div class="modal-content">
+            <h4>Xác nhận thông tin lớp học</h4>
+            <div id="modal-body"></div>
+            <div class="modal-buttons">
+                <button id="confirm-create-class" class="btn-primary">Đúng hết rồi, tạo thôi!</button>
+                <button id="cancel-create-class" class="btn-secondary">Khoan, để check lại đã</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
