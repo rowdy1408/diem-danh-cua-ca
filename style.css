@@ -1,4 +1,3 @@
-/* === BỘ MÀU CHỦ ĐỀ ĐẠI DƯƠNG === */
 :root {
     --deep-blue: #03045e;
     --medium-blue: #0077b6;
@@ -10,11 +9,8 @@
     --danger-red: #d90429;
     --danger-bg: #f8d7da;
 }
-
-/* === VIDEO NỀN & CÀI ĐẶT CHUNG === */
 #background-video {
-    position: fixed;
-    right: 0; bottom: 0;
+    position: fixed; right: 0; bottom: 0;
     min-width: 100%; min-height: 100%;
     z-index: -2;
 }
@@ -25,16 +21,11 @@ body {
     box-sizing: border-box;
 }
 body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0;
+    content: ''; position: fixed; top: 0; left: 0;
     width: 100%; height: 100%;
     background-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(3px);
-    z-index: -1;
+    backdrop-filter: blur(3px); z-index: -1;
 }
-
-/* === KHUNG NỘI DUNG CHÍNH === */
 .login-container, .main-container { 
     background-color: rgba(255, 255, 255, 0.85);
     padding: 40px; border-radius: 24px;
@@ -45,16 +36,12 @@ body::before {
 }
 .login-container { width: 350px; flex-shrink: 0; }
 .main-container { width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; }
-
-/* === CÁC THÀNH PHẦN CHUNG === */
 h1, h2, h3, h4 { color: var(--deep-blue); }
 .hidden { display: none !important; }
 .error-message { color: var(--danger-red); font-weight: bold; height: 20px; margin-top: 15px; }
 input, select, button { font-family: inherit; font-size: 16px; border: none; }
 .avatar-placeholder { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 20px auto; display: flex; justify-content: center; align-items: center; border: 4px solid var(--lightest-blue); overflow: hidden; }
 .avatar-placeholder img { width: 100%; height: 100%; object-fit: cover; }
-
-/* === NÚT BẤM & INPUT === */
 button { border-radius: 12px; padding: 12px 24px; cursor: pointer; font-weight: bold; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
 button:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); }
 button:active { transform: translateY(0); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
@@ -67,8 +54,6 @@ button:active { transform: translateY(0); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.
 .action-buttons button { background-color: var(--sky-blue); color: var(--white); }
 .action-buttons button:hover { background-color: var(--medium-blue); }
 .btn-back { display: block; margin-bottom: 20px; background: none; border: none; box-shadow: none; color: var(--medium-blue); font-weight: bold; }
-
-/* === FORM & DANH SÁCH LỚP === */
 .class-form { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; text-align: left; }
 .form-group { display: flex; flex-direction: column; }
 .form-group label { margin-bottom: 5px; font-weight: bold; color: var(--deep-blue); }
@@ -79,8 +64,6 @@ button:active { transform: translateY(0); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.
 .class-item-button:hover { background-color: var(--light-blue); }
 .delete-class-btn { flex-shrink: 0; padding: 10px 15px; font-size: 18px; background-color: var(--danger-bg); color: var(--danger-red); border: 1px solid #f5c6cb; border-radius: 12px; cursor: pointer; transition: background-color 0.3s; }
 .delete-class-btn:hover { background-color: #f1b0b7; color: var(--white); }
-
-/* === ĐIỂM DANH & BÁO CÁO === */
 .calendar-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
 .calendar-nav button { background-color: #e9ecef; padding: 8px 15px; border-radius: 8px; }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
@@ -105,8 +88,6 @@ button:active { transform: translateY(0); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.
 .hard-delete-btn { background-color: transparent; border: 1px solid var(--danger-red); color: var(--danger-red); padding: 5px 10px; font-size: 14px; border-radius: 8px; box-shadow: none; }
 .hard-delete-btn:hover { background-color: var(--danger-red); color: var(--white); transform: none; box-shadow: none; }
 #grand-total-salary { color: var(--danger-red); }
-
-/* === MODAL === */
 .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); backdrop-filter: blur(5px); display: flex; justify-content: center; align-items: center; z-index: 1000; }
 .modal-content { background-color: var(--white); padding: 30px; border-radius: 16px; width: 90%; max-width: 500px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); }
 #modal-body p { margin: 10px 0; line-height: 1.6; }
